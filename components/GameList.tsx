@@ -1,9 +1,8 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { FlatList, Text, View, Image, TouchableOpacity } from "react-native";
+import { FlatList, Text, View, Image } from "react-native";
 import { GameFindDto } from "../types/GameFind.dto";
-import { GameListNavigationProp } from "../types/Params";
 import { ScaledSheet } from "react-native-size-matters";
+import { Link } from "expo-router";
 
 interface Props {
     gameState: GameFindDto[];
@@ -11,23 +10,20 @@ interface Props {
 
 export const GameList: React.FC<Props> = ({ gameState }) => {
 
-    const navigation = useNavigation<GameListNavigationProp>();
-
-    const handleGamePress = (game: GameFindDto) => {
-        navigation.navigate("GameInfo", { game: game });
-    };
-
     return (
         <FlatList
             data={gameState}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => handleGamePress(item)} key={item.id}>
+                <Link href={{
+                    pathname:"/gameInfo",
+                    params: {game: item}
+                }}>
                     <View style={styles.container}>
                         <Image source={{ uri: item.thumbnail }} style={styles.image} />
                         <Text style={styles.text}>{item.title}</Text>
                     </View>
-                </TouchableOpacity>
+                </Link>
             )}
         />
     );

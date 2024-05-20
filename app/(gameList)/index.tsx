@@ -4,7 +4,6 @@ import { GameSearch } from '@/components/GameSearch';
 import { GameList } from '@/components/GameList';
 import { GameFindDto } from '@/types/GameFind.dto';
 
-
 export default function Games() {
   const [gameState,setGameState] = useState<Array<GameFindDto>>([])
   const [oldData, setOldData] = useState<Array<GameFindDto>>([])
