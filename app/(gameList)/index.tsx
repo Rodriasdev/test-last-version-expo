@@ -22,11 +22,14 @@ export default function Games() {
   },[])
 
   const searchGame = (title:string):void => { 
-    const data = gameState.filter(game => game.title.toLocaleLowerCase() == title.toLocaleLowerCase())
 
-    setGameState(data)
+    if(title){
+      setGameState(gameState.filter((game)=>
+        game.title.toLocaleLowerCase().includes(title.toLocaleLowerCase())
+    ))
+    }
+
   }
-
 
   return (
     <View style={styles.container}>
