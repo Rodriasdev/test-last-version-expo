@@ -9,6 +9,22 @@ interface Props {
     gameState: GameFindDto[];
 }
 
+const colores = [
+    'orange', 'red', 'blue', 'green', 'white',
+    'yellow', 'purple', 'pink', 'brown', 'gray', 'cyan',
+    'magenta', 'lime', 'maroon', 'navy', 'olive', 'teal',
+    'violet', 'indigo', 'gold', 'silver', 'coral', 'salmon',
+    'khaki', 'plum', 'orchid', 'turquoise', 'aqua', 'lavender',
+    'peach', 'periwinkle', 'crimson', 'azure', 'beige', 'mint',
+    'rose', 'apricot', 'amber', 'emerald', 'jade', 'sapphire',
+    'ruby', 'charcoal', 'ebony', 'ivory', 'copper', 'bronze'
+];
+
+
+function addedRandomColor(){
+    const color = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
+    return colores[color]
+}
 
 export const GameList: React.FC<Props> = ({ gameState }) => {
     return (
@@ -21,6 +37,7 @@ export const GameList: React.FC<Props> = ({ gameState }) => {
                         pathname: "/gameInfo",
                         params: { game: JSON.stringify(item) }
                     }}
+                    style={{backgroundColor:addedRandomColor(), color: 'white'}}
                 >
                     <View style={styles.container}>
                         <Image source={{ uri: item.thumbnail }} style={styles.image} />
@@ -40,8 +57,9 @@ const styles = ScaledSheet.create({
     },
     text: {
         fontSize: '18@ms',
-        marginTop: '10@ms',
         textAlign: 'center',
+        marginTop: 5,
+        marginBottom: 30
     },
     image: {
         width: width * 1,
