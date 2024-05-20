@@ -1,8 +1,9 @@
-import { View,TextInput,Button } from "react-native";
+import { View,TextInput,Button, Dimensions } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 import { GameFindDto } from "../types/GameFind.dto";
 import React from "react";
 import { useState } from "react";
+const {width} = Dimensions.get("window")
 
 interface Props {
   searchGame: (value:string) =>void;
@@ -40,11 +41,11 @@ const styles = ScaledSheet.create({
       paddingHorizontal: 20,
       paddingVertical: 10,
       marginBottom: 10,
-      width: '200@ms',
+      width: width * 0.6,
       marginStart: 15
     },
     button: {
-      width: '100@ms',
+      width: width * 0.3,
       marginStart: 20,
       marginTop: 8
     },

@@ -29,7 +29,7 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack initialRouteName='index'>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="gameInfo" options={{headerShown:false}}/>
+        <Stack.Screen name="gameInfo" options={{title: 'Información del juego'}}/>
         {/* <Stack.Screen name="(gameInfo)" options={{headerShown: false}}/> */}
         {/* <Stack.Screen name="+not-found" /> */}
       </Stack>

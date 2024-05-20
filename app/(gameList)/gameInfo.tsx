@@ -1,9 +1,9 @@
-import { View,Image,Text } from "react-native"
+import { View,Image,Text, Dimensions } from "react-native"
 import React from "react"
 import { ScaledSheet } from "react-native-size-matters"
 import { useLocalSearchParams } from "expo-router"
 import { GameFindDto } from "@/types/GameFind.dto"
-
+const {width} = Dimensions.get('window')
 export default function GameInfo() {
     // const route = useRoute<GameInfoRouteProp>()
     // const {game}= route.params
@@ -33,8 +33,8 @@ const style = ScaledSheet.create({
         display: 'flex'
     },
     Image:{
-        width: '355@ms',
-        height: '200@mvs0.3'
+        width: width * 1,
+        height: width * 0.5
     },
     Text:{
         color: 'orange',
