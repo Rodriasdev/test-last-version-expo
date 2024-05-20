@@ -4,9 +4,11 @@ import { GameFindDto } from "../types/GameFind.dto";
 import { ScaledSheet } from "react-native-size-matters";
 import { Link } from "expo-router";
 
+
 interface Props {
     gameState: GameFindDto[];
 }
+
 
 export const GameList: React.FC<Props> = ({ gameState }) => {
 
@@ -15,10 +17,12 @@ export const GameList: React.FC<Props> = ({ gameState }) => {
             data={gameState}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
-                <Link href={{
+                <Link 
+                href={{
                     pathname:"/gameInfo",
-                    params: {game: item}
-                }}>
+                    params: {game: JSON.stringify(item)}
+                }}
+                >
                     <View style={styles.container}>
                         <Image source={{ uri: item.thumbnail }} style={styles.image} />
                         <Text style={styles.text}>{item.title}</Text>

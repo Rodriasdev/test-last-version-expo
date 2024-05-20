@@ -1,21 +1,28 @@
-import { useRoute } from "@react-navigation/native"
 import { View,Image,Text } from "react-native"
-import { GameInfoRouteProp } from "@/types/Params"
 import React from "react"
 import { ScaledSheet } from "react-native-size-matters"
+import { useLocalSearchParams } from "expo-router"
+import { GameFindDto } from "@/types/GameFind.dto"
 
 export default function GameInfo() {
-    const route = useRoute<GameInfoRouteProp>()
-    const {game}= route.params
-    
+    // const route = useRoute<GameInfoRouteProp>()
+    // const {game}= route.params
+
+    const {game} = useLocalSearchParams()
+
+    if (typeof game !== 'string') {
+        throw new Error('error al recibir el objeto')
+    }
+
+    const objectGame: GameFindDto = JSON.parse(game)
     return(
         <View style={style.container}>
-            <Image style={style.Image} source={{uri:game.thumbnail}}/>
+            <Image style={style.Image} source={{uri:objectGame.thumbnail}}/>
             <View style={style.InfoGame}>
                 <View>
                     <Text style={style.Text}>Nombre: </Text>
                 </View>
-                <View><Text>{game.title}</Text></View>
+                <View><Text>{objectGame.title}</Text></View>
             </View>
         </View>
     )
